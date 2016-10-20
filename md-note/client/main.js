@@ -7,8 +7,15 @@ var editmode = false;
 
 jQuery( document ).ready(function() {
 
-  console.log(Markdown.findOne());
-  setTimeout(function(){console.log(Markdown.findOne());}, 4000);
+  setTimeout(function(){
+    console.log(Markdown.find({}).fetch()[Markdown.find({}).fetch().length-1].md);
+    jQuery('#md-input').val(Markdown.find({}).fetch()[Markdown.find({}).fetch().length-1].md);
+    var converter = new showdown.Converter(),
+        text      = Markdown.find({}).fetch()[Markdown.find({}).fetch().length-1].md,
+        html      = converter.makeHtml(text);
+
+    jQuery('#md-display').html(html);
+  }, 1000);
 
   jQuery("textarea").keyup(function() {
     var converter = new showdown.Converter(),
