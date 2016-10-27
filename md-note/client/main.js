@@ -4,17 +4,20 @@ import './main.html';
 Markdown = new Mongo.Collection('markdown');
 
 var editmode = false;
-
+var defnote = 1;
+var noteid;
 jQuery( document ).ready(function() {
 
   setTimeout(function(){
-    console.log(Markdown.find({}).fetch()[Markdown.find({}).fetch().length-1].md);
-    jQuery('#md-input').val(Markdown.find({}).fetch()[Markdown.find({}).fetch().length-1].md);
+    console.log(Markdown.find({note:defnote}).fetch()[0].md);
+    jQuery('#md-input').val(Markdown.find({}).fetch()[0].md);
     var converter = new showdown.Converter(),
-        text      = Markdown.find({}).fetch()[Markdown.find({}).fetch().length-1].md,
+        text      = Markdown.find({note:defnote}).fetch()[0].md,
         html      = converter.makeHtml(text);
 
+    noteid = Markdown.find({note:defnote}).fetch()[0]._id
     jQuery('#md-display').html(html);
+    jQuery('textarea').keyup();
   }, 1000);
 
   jQuery("textarea").keyup(function() {
@@ -23,8 +26,40 @@ jQuery( document ).ready(function() {
         html      = converter.makeHtml(text);
 
     jQuery('#md-display').html(html);
-    console.log(Markdown.insert({md: text, type: "save"}));
+    //console.log(Markdown.insert({md: text, type: "save", note: defnote}));
+    if (Markdown.find({_id: noteid}).fetch().length) {
+      console.log('noteid: ' + noteid);
+      Markdown.update({_id: noteid},{$set: {md: text}})
+    }
+    else {
+      noteid = Markdown.insert({md: text, type: "save", note: defnote})
+    }
+
+
   });
+
+  jQuery('#note-selector button').click(function(){
+    jQuery('#note-selector button').attr('class', 'btn-deactivated')
+    jQuery(this).attr('class', 'btn-activated');
+    defnote = Number(jQuery(this).attr('id'));
+    console.log(defnote);
+      if (Markdown.find({note: defnote}).fetch().length == 0) {
+        noteid = Markdown.insert({md: "", type: "save", note: defnote})
+
+      }
+      console.log(Markdown.find({note:defnote}).fetch()[0].md);
+      jQuery('#md-input').val(Markdown.find({note:defnote}).fetch()[0].md);
+      var converter = new showdown.Converter(),
+          text      = Markdown.find({note:defnote}).fetch()[0].md,
+          html      = converter.makeHtml(text);
+
+      noteid = Markdown.find({note:defnote}).fetch()[0]._id
+      console.log('noteid: ' + noteid);
+      jQuery('#md-display').html(html);
+      jQuery('textarea').keyup();
+
+  });
+
   jQuery('#mode-btn').click(function(){
     if (editmode) {
       jQuery('#display-wrapper').css('width', '100%');

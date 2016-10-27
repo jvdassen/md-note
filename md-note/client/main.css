@@ -13,6 +13,9 @@ body, html {
   margin-left: 5%;
 
 }
+#edit-icon{
+  height: 20px;
+}
 #input-wrapper {
   display: none;
   width: 48%;
@@ -20,9 +23,28 @@ body, html {
   float: left;
   background-color: yellow;
 }
+#mode-btn{
+  float: left;
+  width: 5%
+}
 #nav-bar {
+  float: left;
   width: 90%;
   margin-left: 5%;
+}
+.btn-activated{
+  border-style: solid;
+  border-radius: 3px;
+  border-color: lightblue;
+  height: 25px;
+  width: 25px;
+}
+.btn-deactivated{
+  border-style: solid;
+  border-radius: 3px;
+  border-color: lightgrey;
+  height: 25px;
+  width: 25px;
 }
 textarea {
   width: 100%;
