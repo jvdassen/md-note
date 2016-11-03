@@ -65,12 +65,12 @@ jQuery( document ).ready(function() {
       jQuery('#display-wrapper').css('width', '100%');
       jQuery('#input-wrapper').hide();
       editmode = false;
-      jQuery('#mode-btn').text('Show');
+      jQuery('#mode-btn img').attr('src', 'icons/png/inclined-pencil.png');
     }else {
       jQuery('#display-wrapper').css('width', '50%');
       jQuery('#input-wrapper').show();
       editmode = true;
-      jQuery('#mode-btn').text('Hide');
+      jQuery('#mode-btn img').attr('src', 'icons/png/big-eye.png');
     }
   });
 
