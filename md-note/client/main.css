@@ -54,6 +54,7 @@ iframe {
   float: left;
   height: 30px;
   width: 30px;
+  margin-right: 24px;
 }
 #nav-bar {
   float: left;

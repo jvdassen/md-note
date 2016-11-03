@@ -51,7 +51,10 @@ jQuery( document ).ready(function() {
         noteid = Markdown.insert({md: "", type: "save", note: defnote})
 
       }
+      else {
+
       console.log(Markdown.find({note:defnote}).fetch()[0].md);
+      jQuery('#md-input').val('');
       jQuery('#md-input').val(Markdown.find({note:defnote}).fetch()[0].md);
       var converter = new showdown.Converter(),
           text      = Markdown.find({note:defnote}).fetch()[0].md,
@@ -60,6 +63,8 @@ jQuery( document ).ready(function() {
       noteid = Markdown.find({note:defnote}).fetch()[0]._id
       console.log('noteid: ' + noteid);
       jQuery('#md-display').html(html);
+
+      }
       jQuery('textarea').keyup();
 
   });
