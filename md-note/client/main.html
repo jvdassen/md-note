@@ -9,6 +9,7 @@
   </div>
   {{> navbar}}
   {{> workspace}}
+  {{> cheatsheet}}
 
   <!-- <h1>Welcome to Meteor!</h1>
 
@@ -34,6 +35,13 @@
     <div id="note-selector"><button class="btn-activated" id="1">1</button><button class="btn-deactivated" id="2">2</button></div>
   </div>
 </template>
+
+<template name="cheatsheet">
+  <div id="pseudo-iframe"></div>
+  <button id="cheatsheet-switcher"><img id="cheatsheet-icon" src="/icons/png/info.png"></button>
+</template>
+
+
 <!--
 <template name="info">
   <h2>Learn Meteor!</h2>

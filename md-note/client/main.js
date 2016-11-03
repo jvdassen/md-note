@@ -6,6 +6,10 @@ Markdown = new Mongo.Collection('markdown');
 var editmode = false;
 var defnote = 1;
 var noteid;
+var cheatsheet = {
+  loaded: false,
+  shown: false
+};
 jQuery( document ).ready(function() {
 
   setTimeout(function(){
@@ -71,6 +75,31 @@ jQuery( document ).ready(function() {
       jQuery('#input-wrapper').show();
       editmode = true;
       jQuery('#mode-btn img').attr('src', 'icons/png/big-eye.png');
+    }
+  });
+
+  jQuery('#cheatsheet-switcher').click(function(){
+    if (!cheatsheet.loaded) {
+      jQuery('#pseudo-iframe').append('<iframe src="/markdown-cheatsheet.html"></iframe>')
+      cheatsheet.loaded = true;
+    }
+
+    if (!cheatsheet.shown) {
+      jQuery('iframe').show();
+      jQuery('#cheatsheet-switcher img').attr('src', '/icons/png/cancel-symbol-inside-a-circle.png');
+      cheatsheet.shown = true;
+      jQuery('#nav-bar').css('-webkit-filter', ' blur(1px)');
+      jQuery('#nav-bar').css('-moz-filter', 'blur(1px)');
+      jQuery('#nav-bar').css('-ms-filter', 'blur(1px)');
+      jQuery('#nav-bar').css('-o-filter', 'blur(1px)');
+      jQuery('#nav-bar').css('filter', 'blur(1px)')
+    }
+
+    else {
+      jQuery('iframe').hide();
+      jQuery('#cheatsheet-switcher img').attr('src', '/icons/png/info.png');
+      cheatsheet.shown = false;
+      jQuery('#nav-bar').css('filter', '')
     }
   });
 

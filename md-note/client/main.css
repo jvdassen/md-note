@@ -7,6 +7,18 @@ body, html {
 blockquote {
   color: rgba(200,200,200,1)
 }
+#cheatsheet-switcher {
+  position: fixed;
+  bottom: 4px;
+  right: 0px;
+  background: none;
+  border: none;
+  height: 50px;
+  width: 50px;
+}
+#cheatsheet-icon {
+  width: 30px;
+}
 #workspace {
   position: relative;
   top: 5%;
@@ -20,6 +32,14 @@ blockquote {
   position: relative;
 top: 43%;
 transform: translateY(-50%);
+}
+iframe {
+  left: 5%;
+  border: none;
+  width: 90%;
+  position: fixed;
+  top: 5%;
+  height: 95%;
 }
 #input-wrapper {
   display: none;
