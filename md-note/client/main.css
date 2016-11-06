@@ -1,4 +1,15 @@
 /* CSS declarations go here */
+@media screen and (max-width: 800px) {
+  .btn-activated, .btn-deactivated #mode-btn{
+    height:4em;
+    width:4em;
+    margin-bottom: 1em;
+  }
+  #cheatsheet-switcher{
+    display:none;
+  }
+
+}
 body, html {
   height: 100%;
   width: 100%;
@@ -193,4 +204,17 @@ sup {
 	pre {
 		word-wrap: break-word;
 	}
+}
+@media screen and (max-width: 800px) {
+  .btn-activated, .btn-deactivated, #mode-btn{
+    height:4em;
+    width:4em;
+    margin-bottom: 1em;
+  }
+  #cheatsheet-switcher{
+    display:none;
+  }
+  #mode-btn {
+    margin-right: 0.3em;
+  }
 }
