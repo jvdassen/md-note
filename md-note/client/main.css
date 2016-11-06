@@ -21,7 +21,7 @@ blockquote {
 }
 #workspace {
   position: relative;
-  top: 5%;
+  top: 15px;
   display: inline-block;
   width: 90%;
   height: 90%;
@@ -54,7 +54,7 @@ iframe {
   float: left;
   height: 30px;
   width: 30px;
-  margin-right: 24px;
+  margin-right: 15px;
 }
 #nav-bar {
   float: left;
